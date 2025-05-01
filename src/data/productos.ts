@@ -1,0 +1,42 @@
+export const productos = [
+  {
+    id: 1,
+    nombre: "Grabado en madera láser",
+    descripcion: "Personalización sobre madera con grabado láser.",
+    precio: 30,
+    imagen: "/madera.jpg",
+    categoria: "madera",
+  },
+  {
+    id: 2,
+    nombre: "Vinilo para moto",
+    descripcion: "Vinilo decorativo y resistente para motos.",
+    precio: 75,
+    imagen: "/vinilo.jpg",
+    categoria: "vinilo",
+  },
+  {
+    id: 3,
+    nombre: "Cerámica personalizada",
+    descripcion: "Personaliza platos, tazas u objetos cerámicos.",
+    precio: 30,
+    imagen: "/ceramica.jpg",
+    categoria: "ceramica",
+  },
+  {
+    id: 4,
+    nombre: "Grabado en metal",
+    descripcion: "Placas y objetos metálicos personalizados.",
+    precio: 30,
+    imagen: "/metal.jpg",
+    categoria: "metal",
+  },
+  {
+    id: 5,
+    nombre: "Diseño totalmente personalizado",
+    descripcion: "Cuéntanos tu idea y le damos forma.",
+    precio: null,
+    imagen: "/personalizado.jpg",
+    categoria: "personalizado",
+  },
+];
