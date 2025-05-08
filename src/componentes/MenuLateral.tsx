@@ -74,7 +74,7 @@ export default function MenuLateral() {
             { href: "/", label: "Inicio" },
             { href: "/catalogo", label: "Catálogo" },
             { href: "/disenos", label: "Diseños hasta la fecha" },
-            { href: "/simulador", label: "Simulador" }
+            { href: "/contacto", label: "Contacto" } // Agregado enlace a Contacto
           ].map((link) => (
             <Link 
               key={link.href}

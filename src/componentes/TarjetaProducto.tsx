@@ -1,26 +1,27 @@
 import { useState } from 'react';
+
 interface Props {
   id: number;
   nombre: string;
   descripcion: string;
   precio: number | null;
   imagen: string;
-  onAgregarAlCarrito: () => void;
+  onAgregarAlCarrito: (imagenSubida: File | null) => void;
 }
 
-export default function TarjetaProducto({ 
-  id, 
-  nombre, 
-  descripcion, 
-  precio, 
+export default function TarjetaProducto({
+  id,
+  nombre,
+  descripcion,
+  precio,
   imagen,
-  onAgregarAlCarrito 
+  onAgregarAlCarrito
 }: Props) {
   const [imagenSubida, setImagenSubida] = useState<File | null>(null);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onAgregarAlCarrito();
+    onAgregarAlCarrito(imagenSubida);
   };
 
   return (
@@ -29,7 +30,7 @@ export default function TarjetaProducto({
       <h2 className="text-xl font-semibold">{nombre}</h2>
       <p className="text-sm text-gray-600">{descripcion}</p>
       <p className="text-lg font-bold my-2">
-        {precio ? `${precio} €` : "Precio a consultar"}
+        {precio ? `${precio} € Aprox.` : "Precio a consultar"}
       </p>
 
       <form onSubmit={handleSubmit} className="mt-auto space-y-2">

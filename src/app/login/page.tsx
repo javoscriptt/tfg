@@ -27,19 +27,25 @@ export default function LoginPage() {
 
       if (docSnap.exists()) {
         const datos = docSnap.data();
-
         if (datos.rol === "admin") {
           router.push("/gestion");
         } else {
-          router.push("/perfil");
+          router.push("/catalogo"); // Cambiar a /catalogo en lugar de /perfil
         }
       } else {
-        setError("Usuario sin rol asignado.");
+        // Si el documento no existe, créalo con rol "cliente"
+        await setDoc(docRef, {
+          email: credenciales.user.email,
+          rol: "cliente",
+          creado: new Date()
+        });
+        router.push("/catalogo"); // Redirigir al catálogo
       }
     } catch (err: any) {
       setError("Correo o contraseña incorrectos.");
     }
   };
+
 
   return (
     <main className="p-6 max-w-md mx-auto">

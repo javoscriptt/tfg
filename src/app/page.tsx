@@ -7,13 +7,13 @@ export default function HomePage() {
         <h1 className="text-3xl font-bold mb-6 text-center">¿Quiénes somos?</h1>
         <div className="flex flex-col md:flex-row items-center gap-8">
           <p className="text-lg mb-6 text-center md:w-1/2">
-            Somos especialistas en personalización de objetos como tazas, camisetas,
+            Javier Esteban y Javer Blanco, Somos especialistas en personalización de objetos como tazas, camisetas,
             chapas y vinilos para motos. Utilizamos impresión láser y serigrafía
             para dar vida a tus ideas.
           </p>
           <div className="relative w-full md:w-1/2 h-64">
             <Image
-              src="/images/quienes-somos.jpg"
+              src="/images/trabajando.png"
               alt="Taller de diseño"
               fill
               className="object-cover rounded-lg"

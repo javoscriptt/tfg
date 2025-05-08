@@ -20,16 +20,20 @@ export default function RegistroPage() {
       const credenciales = await createUserWithEmailAndPassword(auth, email, password);
       const uid = credenciales.user.uid;
 
-      // Guardar en Firestore con rol "usuario"
+      // Guardar en Firestore con rol "cliente"
       await setDoc(doc(db, "usuarios", uid), {
         email,
-        rol: "usuario",
+        rol: "cliente", // Cambiado de "usuario" a "cliente"
         creado: new Date(),
       });
 
-      router.push("/perfil"); // Redirige al panel de usuario
+      router.push("/catalogo"); // Redirigir al catálogo en lugar de al perfil
     } catch (err: any) {
-      setError(err.message);
+      if (err.code === 'auth/email-already-in-use') {
+        setError('Este correo ya está registrado');
+      } else {
+        setError('Error al registrar usuario');
+      }
     }
   };
 
