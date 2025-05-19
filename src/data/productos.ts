@@ -26,7 +26,7 @@ export const productos = [
   {
     id: 4,
     nombre: "Diseño totalmente personalizado",
-    descripcion: "Cuéntanos tu idea y le damos forma.",
+    descripcion: "Compartenos una foto de lo que quieres personalizar y en menos de 24h te contactamos.",
     precio: null,
     imagen: "/images/bombilla.png",
     categoria: "personalizado",
