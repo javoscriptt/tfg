@@ -14,4 +14,5 @@ export interface ProductoPedido {
   cantidad: number;
   personalizacion?: string;
   urlImagen?: string;
+  imagenPersonalizada?: string;
 }

@@ -4,25 +4,24 @@ import { Pedido } from '@/tipos/pedido';
 
 export const servicioPedidos = {
   async crearPedido(pedido: Omit<Pedido, 'id'>): Promise<string> {
-    try {
-      // Crear el objeto del pedido con Timestamp de Firestore
-      const pedidoParaGuardar = {
-        usuarioId: pedido.usuarioId,
-        correoUsuario: pedido.correoUsuario,
-        productos: pedido.productos,
-        total: pedido.total,
-        fechaCreacion: Timestamp.now() // Cambiado a Timestamp de Firestore
-      };
+  try {
+    const pedidoParaGuardar = {
+      ...pedido,
+      productos: pedido.productos.map(p => ({
+        ...p,
+        urlImagen: p.urlImagen?.startsWith('/images/') ? p.urlImagen : `/images/${p.urlImagen}`,
+        imagenPersonalizada: p.imagenPersonalizada ? `/images/${p.imagenPersonalizada}` : undefined
+      })),
+      fechaCreacion: Timestamp.now()
+    };
 
-      // Crear el documento en la colección principal de pedidos
-      const pedidoRef = await addDoc(collection(db, 'pedidos'), pedidoParaGuardar);
-      
-      return pedidoRef.id;
-    } catch (error) {
-      console.error('Error al crear el pedido:', error);
-      throw new Error('No se pudo crear el pedido');
-    }
-  },
+    const pedidoRef = await addDoc(collection(db, 'pedidos'), pedidoParaGuardar);
+    return pedidoRef.id;
+  } catch (error) {
+    console.error('Error al crear el pedido:', error);
+    throw new Error('No se pudo crear el pedido');
+  }
+},
 
 
 

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Image from 'next/image';
 
 interface Props {
   id: number;
@@ -6,7 +7,7 @@ interface Props {
   descripcion: string;
   precio: number | null;
   imagen: string;
-  onAgregarAlCarrito: (imagenSubida: File | null) => void;
+  onAgregarAlCarrito: (imagenPersonalizada: string | null) => void;
 }
 
 export default function TarjetaProducto({
@@ -19,9 +20,14 @@ export default function TarjetaProducto({
 }: Props) {
   const [imagenSubida, setImagenSubida] = useState<File | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    onAgregarAlCarrito(imagenSubida);
+    if (imagenSubida) {
+      const nombreArchivo = imagenSubida.name;
+      onAgregarAlCarrito(nombreArchivo);
+    } else {
+      onAgregarAlCarrito(null);
+    }
   };
 
   return (
@@ -38,14 +44,14 @@ export default function TarjetaProducto({
           Imagen para personalizar:
           <input
             type="file"
-            accept="image/*"
+            accept=".png"
             onChange={(e) => setImagenSubida(e.target.files?.[0] || null)}
-            className="block mt-1"
+            className="block mt-1 w-full"
           />
         </label>
         <button
           type="submit"
-          className="bg-indigo-600 text-white px-4 py-1 rounded-xl w-full hover:bg-indigo-700"
+          className="bg-indigo-600 text-white px-4 py-2 rounded-xl w-full hover:bg-indigo-700"
         >
           Agregar al carrito
         </button>
