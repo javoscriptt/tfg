@@ -1,31 +1,30 @@
 import { db } from '@/firebase/config';
-import { collection, addDoc, doc, getDoc, getDocs, query, where, orderBy } from 'firebase/firestore';
+import { collection, addDoc, doc, getDoc, getDocs, query, where, orderBy, Timestamp } from 'firebase/firestore';
 import { Pedido } from '@/tipos/pedido';
 
 export const servicioPedidos = {
   async crearPedido(pedido: Omit<Pedido, 'id'>): Promise<string> {
     try {
-      // Convertir la fecha a timestamp de Firestore
+      // Crear el objeto del pedido con Timestamp de Firestore
       const pedidoParaGuardar = {
-        ...pedido,
-        fechaCreacion: new Date().toISOString()
+        usuarioId: pedido.usuarioId,
+        correoUsuario: pedido.correoUsuario,
+        productos: pedido.productos,
+        total: pedido.total,
+        fechaCreacion: Timestamp.now() // Cambiado a Timestamp de Firestore
       };
 
+      // Crear el documento en la colección principal de pedidos
       const pedidoRef = await addDoc(collection(db, 'pedidos'), pedidoParaGuardar);
       
-      // También guardar referencia en la colección del usuario
-      const userPedidosRef = collection(db, `usuarios/${pedido.usuarioId}/pedidos`);
-      await addDoc(userPedidosRef, {
-        pedidoId: pedidoRef.id,
-        fechaCreacion: new Date().toISOString()
-      });
-
       return pedidoRef.id;
     } catch (error) {
       console.error('Error al crear el pedido:', error);
       throw new Error('No se pudo crear el pedido');
     }
   },
+
+
 
   async obtenerPedidosUsuario(usuarioId: string): Promise<Pedido[]> {
     try {
