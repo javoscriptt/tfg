@@ -46,10 +46,10 @@ export default function PaginaCatalogo() {
       });
 
       setCarrito([]);
-      alert('¡Pedido realizado con éxito!');
+      alert('¡Pedido realizado con éxito! Contactaremos contigo pronto.');
     } catch (error) {
       console.error('Error al crear el pedido:', error);
-      alert('Error al procesar el pedido');
+      alert('Debes insertar una imagen PNG del producto que quieres personalizar.');
     } finally {
       setCargando(false);
     }
