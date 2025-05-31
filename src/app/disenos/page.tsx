@@ -21,7 +21,7 @@ export default function DisenosPage() {
       id: 3, 
       imagen: '/images/diseno3.png', 
       imagenAmpliada: '/images/diseno31.png',
-      titulo: 'Vinilo "Stake',
+      titulo: 'Pegatinas Stake',
       historia: 'Estas pegatinas las creamos para una nueva cafetería que abría en el centro de Madrid y querian que con cada compra que hicieran los clientes regalarles ese pequeño detalle de la marca tambien para hacerse algo de publicidad. Ahora vemos nuestras propias pegatinas por todos lados.'
     },
     { 

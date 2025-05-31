@@ -77,7 +77,7 @@ export default function HomePage() {
               </p>
               <div className="relative w-full md:w-1/2 h-64">
                 <Image
-                  src="/images/trabajando.png"
+                  src="/images/equipo.png"
                   alt="Taller de diseño"
                   fill
                   className="object-cover rounded-lg"
@@ -91,9 +91,9 @@ export default function HomePage() {
             <h2 className="text-2xl font-semibold mb-8 text-center">Diseños destacados</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               <ProductCard
-                title="Taza"
-                image="/images/taza.png"
-                description="Diseño personalizado para tazas"
+                title="Lápiz"
+                image="/images/lapiz.png"
+                description="Diseño personalizado para material escolar"
               />
               <ProductCard
                 title="Moto"
@@ -106,9 +106,9 @@ export default function HomePage() {
                 description="Llavero grabado con tu estilo"
               />
               <ProductCard
-                title="Puerta"
-                image="/images/puerta.png"
-                description="Vinilos decorativos para puertas"
+                title="Chapa para mascotas"
+                image="/images/chapa.png"
+                description="Chapa con el nombre e informacion de tu mascota"
               />
             </div>
           </section>

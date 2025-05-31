@@ -76,23 +76,38 @@ export default function PaginaCatalogo() {
       </div>
 
       {carrito.length > 0 && (
-        <div className="fixed bottom-4 right-4 bg-white p-4 rounded-lg shadow-lg">
+        <div className="fixed bottom-4 right-4 bg-white p-4 rounded-lg shadow-lg w-80">
           <h2 className="text-lg font-bold mb-2">Carrito</h2>
-          <ul className="mb-4">
+          <ul className="mb-4 space-y-2">
             {carrito.map(item => (
-              <li key={item.id} className="flex justify-between">
-                <span>{item.nombre} x {item.cantidad}</span>
-                <span>{(item.precio * item.cantidad).toFixed(2)}€</span>
+              <li key={item.id} className="flex flex-col border-b pb-2">
+                <div className="flex justify-between items-center">
+                  <span className="font-medium">{item.nombre}</span>
+                </div>
+                <div className="flex justify-between items-center text-sm text-gray-600">
+                  <span>Cantidad: {item.cantidad}</span>
+                  <span className="font-semibold text-black">
+                    {(item.precio * item.cantidad).toFixed(2)}€
+                  </span>
+                </div>
               </li>
             ))}
           </ul>
-          <button
-            onClick={realizarPedido}
-            disabled={cargando}
-            className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700"
-          >
-            {cargando ? 'Procesando...' : 'Realizar Pedido'}
-          </button>
+          <div className="border-t pt-2">
+            <div className="flex justify-between mb-2">
+              <span className="font-bold">Total:</span>
+              <span className="font-bold">
+                {carrito.reduce((sum, item) => sum + item.precio * item.cantidad, 0).toFixed(2)}€
+              </span>
+            </div>
+            <button
+              onClick={realizarPedido}
+              disabled={cargando}
+              className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700"
+            >
+              {cargando ? 'Procesando...' : 'Realizar Pedido'}
+            </button>
+          </div>
         </div>
       )}
     </div>
